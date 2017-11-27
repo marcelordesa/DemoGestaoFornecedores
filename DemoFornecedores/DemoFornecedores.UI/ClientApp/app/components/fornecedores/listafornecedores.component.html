@@ -1,0 +1,27 @@
+﻿<h1>Fornecedores</h1>
+
+<p>Lista de fornecedores</p>
+
+<p *ngIf="!fornecedores"><em>Loading...</em></p>
+
+<table class='table table-hover table-striped' *ngIf="fornecedores">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Documento</th>
+            <th>Setor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fornecedor of fornecedores">
+            <td>{{ fornecedor.nome }}</td>
+            <td>{{ fornecedor.documento }}</td>
+            <td>{{ fornecedor.setor.nome }}</td>
+            <td>
+                <a class="glyphicon glyphicon-pencil" style="cursor:pointer;float:left;margin-right:40px;" title="Editar" [routerLink]="['/editar-fornecedor/'+fornecedor.id]"></a>
+                <a class="glyphicon glyphicon-remove" style="cursor:pointer;float:left;" title="Excluir" (click)="excluir(fornecedor)"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
